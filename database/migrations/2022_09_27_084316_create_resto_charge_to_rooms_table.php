@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('resto_charge_to_rooms', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('resto_transaction_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignId('reservation_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

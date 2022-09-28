@@ -15,6 +15,18 @@ return new class extends Migration
     {
         Schema::create('laundries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+            $table->foreignId('reservation_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->string('name');
+            $table->varchar('laundry_type');
+            $table->integer('quantity');
+            $table->decimal('total', 15, 2);
             $table->timestamps();
         });
     }

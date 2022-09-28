@@ -13,14 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('room_rates', function (Blueprint $table) {
+        Schema::create('reservation_rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_types_id')
+            $table->foreignId('reservation_id')
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->string('name');
-            $table->decimal('price');
+            $table->foreignId('room_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+            $table->foreignId('rate_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->timestamps();
         });
     }
@@ -32,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('room_rates');
+        Schema::dropIfExists('reservation_rooms');
     }
 };

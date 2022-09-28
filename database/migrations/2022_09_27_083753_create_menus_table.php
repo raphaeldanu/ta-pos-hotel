@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('menu_categories_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+            $table->string('name');
+            $table->decimal('price', 15, 2);
             $table->timestamps();
         });
     }

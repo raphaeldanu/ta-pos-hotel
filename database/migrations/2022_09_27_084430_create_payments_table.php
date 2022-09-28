@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('reservation_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->decimal('total_payment', 15, 2);
+            $table->varchar('payment_mode');
+            $table->varcher('payment_status');
             $table->timestamps();
         });
     }

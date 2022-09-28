@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('resto_trans_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('resto_transaction_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignId('menu_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+            $table->integer('quantity');
+            $table->decimal('total', 15, 2);
             $table->timestamps();
         });
     }
