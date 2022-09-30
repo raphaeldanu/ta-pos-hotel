@@ -20,8 +20,8 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->decimal('total_payment', 15, 2);
-            $table->varchar('payment_mode');
-            $table->varcher('payment_status');
+            $table->string('payment_mode');
+            $table->string('payment_status');
             $table->timestamps();
         });
     }

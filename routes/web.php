@@ -20,8 +20,11 @@ Route::get('/', function () {
 });
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/login', 'login')->name('login');
+    Route::get('/login', 'login')->name('login')->middleware('guest');
     Route::post('/login', 'authenticate');
+    Route::post('/logout', 'logout')->middleware('auth');
 });
 
-Route::get('dashboard', [DashboardController::class, 'index']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index']);
+});

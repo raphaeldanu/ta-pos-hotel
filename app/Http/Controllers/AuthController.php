@@ -29,4 +29,15 @@ class AuthController extends Controller
             'username' => 'The provided credentials do not match our records.',
         ])->onlyInput('username');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+ 
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect('/');
+    }
 }

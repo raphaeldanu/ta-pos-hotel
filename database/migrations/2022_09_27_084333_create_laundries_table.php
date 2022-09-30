@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('laundries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
+                ->nullable()
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
@@ -24,7 +25,7 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->string('name');
-            $table->varchar('laundry_type');
+            $table->string('laundry_type');
             $table->integer('quantity');
             $table->decimal('total', 15, 2);
             $table->timestamps();
