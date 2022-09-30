@@ -4,6 +4,7 @@ namespace App\Enums;
 
 enum UserRole:string
 {
+  case SuperAdmin = 'super_admin';
   case FrontOfficeStaff = 'fo_staff';
   case FrontOfficeSupervisor = 'fo_supervisor';
   case KitchenStaff = 'fb_staff';
