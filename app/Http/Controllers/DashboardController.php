@@ -13,4 +13,12 @@ class DashboardController extends Controller
             'user' => auth()->user(),
         ]);
     }
+
+    public function userSetting()
+    {
+        return view('dashboard', [
+            'title' => 'User Setting',
+            'user' => auth()->user(),
+        ]);
+    }
 }
