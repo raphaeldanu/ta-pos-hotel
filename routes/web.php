@@ -27,7 +27,8 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
-        Route::get('/dashboard', 'index');
+        Route::get('/dashboard', 'index')->name('dashboard');
         Route::get('/user-settings', 'userSetting')->name('user-setting');
+        Route::post('/update-password', 'updatePassword');
     });
 });
